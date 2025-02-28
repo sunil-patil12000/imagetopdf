@@ -161,6 +161,7 @@ function App() {
 
         <Routes>
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/about" element={<About />} />
           <Route path="/" element={
             <main className="flex-1">
               {renderContent()}
