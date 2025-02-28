@@ -12,6 +12,7 @@ import Helmet from 'react-helmet'; // Import Helmet for SEO optimizations
 import Breadcrumb from './components/Breadcrumb'; // Import Breadcrumb component
 import LanguageSelector from './components/LanguageSelector'; // Import LanguageSelector component
 import LiveChat from './components/LiveChat'; // Import LiveChat component
+import CookieConsent from './components/CookieConsent'; // Import CookieConsent component
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -260,6 +261,7 @@ function App() {
             </div>
           </div>
         )}
+        <CookieConsent />
         <LiveChat />
       </div>
   
