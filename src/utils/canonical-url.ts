@@ -8,12 +8,15 @@
  * @param lang - Optional language code (e.g., 'en', 'es')
  * @returns The full canonical URL
  */
-export function getCanonicalUrl(path: string, lang?: string): string {
+export function getCanonicalUrl(path?: string, lang?: string): string {
   // Base domain
   const baseDomain = 'https://imgtopdf.sunilpatil.tech';
   
+  // Handle undefined path
+  const safePath = path || '/';
+  
   // Remove trailing slashes
-  const cleanPath = path.replace(/\/+$/, '');
+  const cleanPath = safePath.replace(/\/+$/, '');
   
   // If it's the homepage
   if (cleanPath === '' || cleanPath === '/') {
@@ -39,7 +42,7 @@ export function getCanonicalUrl(path: string, lang?: string): string {
  * @param path - The current path (e.g., '/about')
  * @returns Array of language and URL pairs
  */
-export function getAlternateLanguageUrls(path: string): Array<{lang: string, url: string}> {
+export function getAlternateLanguageUrls(path?: string): Array<{lang: string, url: string}> {
   // Supported languages
   const languages = ['en', 'es', 'fr', 'de', 'zh', 'ja', 'ar', 'hi'];
   
@@ -52,20 +55,26 @@ export function getAlternateLanguageUrls(path: string): Array<{lang: string, url
 /**
  * Get the hreflang markup for the current page
  * @param path - The current path
- * @returns Array of link elements for hreflang
+ * @returns Array of hreflang link data for use in Helmet or other components
  */
-export function getHreflangLinks(path: string): JSX.Element[] {
+export function getHreflangLinks(path?: string): Array<{key: string, rel: string, hrefLang: string, href: string}> {
   const alternateUrls = getAlternateLanguageUrls(path);
   
-  // Create link elements for each language
-  const links = alternateUrls.map(({ lang, url }) => 
-    <link key={`hreflang-${lang}`} rel="alternate" hrefLang={lang} href={url} />
-  );
+  // Create link data for each language
+  const links = alternateUrls.map(({ lang, url }) => ({
+    key: `hreflang-${lang}`,
+    rel: "alternate",
+    hrefLang: lang,
+    href: url
+  }));
   
   // Add x-default (usually points to English version)
-  links.push(
-    <link key="hreflang-x-default" rel="alternate" hrefLang="x-default" href={getCanonicalUrl(path, 'en')} />
-  );
+  links.push({
+    key: "hreflang-x-default",
+    rel: "alternate",
+    hrefLang: "x-default",
+    href: getCanonicalUrl(path, 'en')
+  });
   
   return links;
 }

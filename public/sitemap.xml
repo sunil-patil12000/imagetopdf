@@ -1,78 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
-        http://www.google.com/schemas/sitemap-image/1.1
-        http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
-
-  <!-- Homepage -->
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://imagetopdf.com/</loc>
-    <lastmod>2025-02-28</lastmod>
+    <loc>https://imgtopdf.sunilpatil.tech/</loc>
+    <lastmod>2024-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://imagetopdf.com/og-image.jpg</image:loc>
+      <image:loc>https://imgtopdf.sunilpatil.tech/hero-image.webp</image:loc>
       <image:title>Image to PDF Converter Online</image:title>
-      <image:caption>Convert images to PDF online for free with no watermark</image:caption>
     </image:image>
   </url>
-
-  <!-- About Page -->
   <url>
-    <loc>https://imagetopdf.com/about</loc>
-    <lastmod>2025-02-28</lastmod>
+    <loc>https://imgtopdf.sunilpatil.tech/about</loc>
+    <lastmod>2024-02-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Blog Homepage -->
   <url>
-    <loc>https://imagetopdf.com/blog</loc>
-    <lastmod>2025-02-28</lastmod>
+    <loc>https://imgtopdf.sunilpatil.tech/blog</loc>
+    <lastmod>2024-02-28</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://imgtopdf.sunilpatil.tech/blog/convert-images-to-pdf-guide</loc>
+    <lastmod>2024-02-28</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-
-  <!-- Blog Post 1 -->
-  <url>
-    <loc>https://imagetopdf.com/blog/how-to-optimize-pdf-files-for-seo</loc>
-    <lastmod>2025-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
     <image:image>
-      <image:loc>https://imagetopdf.com/blog-images/optimize-pdf-seo.jpg</image:loc>
-      <image:title>How to Optimize PDF Files for SEO</image:title>
-      <image:caption>Learn how properly formatted PDF files can improve your website's search engine rankings</image:caption>
+      <image:loc>https://imgtopdf.sunilpatil.tech/blog-images/convert-images-to-pdf-header.webp</image:loc>
+      <image:title>How to Convert Images to PDF Online</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://imgtopdf.sunilpatil.tech/blog-images/jpg-vs-pdf-comparison.webp</image:loc>
+      <image:title>Benefits of converting images to PDF format</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://imgtopdf.sunilpatil.tech/blog-images/step-by-step-conversion.webp</image:loc>
+      <image:title>Step-by-step guide to convert JPG to PDF online</image:title>
     </image:image>
   </url>
-
-  <!-- Blog Post 2 -->
   <url>
-    <loc>https://imagetopdf.com/blog/convert-images-to-pdf-on-mobile</loc>
-    <lastmod>2025-02-18</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://imgtopdf.sunilpatil.tech/es/</loc>
+    <lastmod>2024-02-28</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://imagetopdf.com/blog-images/mobile-pdf-conversion.jpg</image:loc>
-      <image:title>5 Ways to Convert Images to PDF on Mobile</image:title>
-      <image:caption>Discover the best tools and techniques for converting images to PDF on your smartphone</image:caption>
-    </image:image>
   </url>
-
-  <!-- Blog Post 3 -->
   <url>
-    <loc>https://imagetopdf.com/blog/pdf-accessibility-guide</loc>
-    <lastmod>2025-02-10</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://imgtopdf.sunilpatil.tech/fr/</loc>
+    <lastmod>2024-02-28</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://imagetopdf.com/blog-images/pdf-accessibility.jpg</image:loc>
-      <image:title>The Complete Guide to PDF Accessibility</image:title>
-      <image:caption>Make your PDFs accessible to everyone with these essential tips and best practices</image:caption>
-    </image:image>
   </url>
-
+  <url>
+    <loc>https://imgtopdf.sunilpatil.tech/de/</loc>
+    <lastmod>2024-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imgtopdf.sunilpatil.tech/zh/</loc>
+    <lastmod>2024-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imgtopdf.sunilpatil.tech/ja/</loc>
+    <lastmod>2024-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imgtopdf.sunilpatil.tech/ar/</loc>
+    <lastmod>2024-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imgtopdf.sunilpatil.tech/hi/</loc>
+    <lastmod>2024-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

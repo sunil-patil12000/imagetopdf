@@ -14,6 +14,9 @@ import LanguageSelector from './components/LanguageSelector'; // Import Language
 import LiveChat from './components/LiveChat'; // Import LiveChat component
 import CookieConsent from './components/CookieConsent'; // Import CookieConsent component
 import { logWebVitalsToConsole, initAnalyticsWithWebVitals } from './utils/web-vitals'; // Import Web Vitals utilities
+import BlogHome from './pages/BlogHome'; // Import BlogHome component
+import ImageToPDFBlogPost from './pages/ImageToPDFBlogPost'; // Import specific blog post
+import { getHreflangLinks } from './utils/canonical-url'; // Import hreflang utility
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -86,15 +89,9 @@ function App() {
           <link rel="canonical" href="https://imagetopdf.com" />
           
           {/* Hreflang tags for international SEO */}
-          <link rel="alternate" hrefLang="x-default" href="https://imagetopdf.com/" />
-          <link rel="alternate" hrefLang="en" href="https://imagetopdf.com/" />
-          <link rel="alternate" hrefLang="es" href="https://imagetopdf.com/es/" />
-          <link rel="alternate" hrefLang="fr" href="https://imagetopdf.com/fr/" />
-          <link rel="alternate" hrefLang="de" href="https://imagetopdf.com/de/" />
-          <link rel="alternate" hrefLang="zh" href="https://imagetopdf.com/zh/" />
-          <link rel="alternate" hrefLang="ja" href="https://imagetopdf.com/ja/" />
-          <link rel="alternate" hrefLang="ar" href="https://imagetopdf.com/ar/" />
-          <link rel="alternate" hrefLang="hi" href="https://imagetopdf.com/hi/" />
+          {getHreflangLinks('/').map(link => (
+            <link key={link.key} rel={link.rel} hrefLang={link.hrefLang} href={link.href} />
+          ))}
           
           {/* Structured Data Markup for Product and FAQs */}
           <script type="application/ld+json">
@@ -248,9 +245,10 @@ function App() {
         <Breadcrumb />
 
         <Routes>
-        <Route path="/" element={<NewHome darkMode={darkMode} />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/blog" element={<BlogPage />} />
+          <Route path="/" element={<NewHome darkMode={darkMode} />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/blog" element={<BlogHome darkMode={darkMode} />} />
+          <Route path="/blog/convert-images-to-pdf-guide" element={<ImageToPDFBlogPost darkMode={darkMode} />} />
         </Routes>
 
         <Footer darkMode={darkMode} />
