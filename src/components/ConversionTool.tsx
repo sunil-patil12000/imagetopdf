@@ -231,7 +231,7 @@ const ConversionTool: React.FC<ConversionToolProps> = ({ darkMode }) => {
   const [showPdfSettingsModal, setShowPdfSettingsModal] = useState(false);
 
   return (
-    <>
+    <div className={`min-h-screen ${darkMode ? 'dark bg-gray-900' : 'bg-white'}`}>
       <Helmet>
         <link rel="canonical" href="https://yourdomain.com/image-to-pdf" />
         <title>Best Free Image to PDF Converter Online – No Watermark</title>
@@ -417,7 +417,7 @@ const ConversionTool: React.FC<ConversionToolProps> = ({ darkMode }) => {
           />
         )}
       </div>
-    </>
+    </div>
   );
 };
 
