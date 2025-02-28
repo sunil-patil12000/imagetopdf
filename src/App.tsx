@@ -13,6 +13,7 @@ import Breadcrumb from './components/Breadcrumb'; // Import Breadcrumb component
 import LanguageSelector from './components/LanguageSelector'; // Import LanguageSelector component
 import LiveChat from './components/LiveChat'; // Import LiveChat component
 import CookieConsent from './components/CookieConsent'; // Import CookieConsent component
+import { logWebVitalsToConsole, initAnalyticsWithWebVitals } from './utils/web-vitals'; // Import Web Vitals utilities
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -38,6 +39,21 @@ function App() {
   useEffect(() => {
     const savedConsent = localStorage.getItem('cookieConsent');
     if (savedConsent) setCookieConsent(JSON.parse(savedConsent));
+  }, []);
+
+  useEffect(() => {
+    // Log web vitals during development
+    logWebVitalsToConsole();
+    
+    // Initialize Google Analytics with Web Vitals tracking
+    // Only use this if analytics cookies are accepted
+    const cookiePreferences = localStorage.getItem('cookiePreferences');
+    if (cookiePreferences) {
+      const prefs = JSON.parse(cookiePreferences);
+      if (prefs.analytics) {
+        initAnalyticsWithWebVitals('G-XXXXXXXXXX'); // Replace with your GA measurement ID
+      }
+    }
   }, []);
 
   const toggleDarkMode = () => {
@@ -261,8 +277,8 @@ function App() {
             </div>
           </div>
         )}
-        <CookieConsent />
-        <LiveChat />
+        <LiveChat darkMode={darkMode} />
+        <CookieConsent darkMode={darkMode} />
       </div>
   
   );
