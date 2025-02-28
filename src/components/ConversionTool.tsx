@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { Upload, Image, Settings, Download, X, ArrowUp, ArrowDown } from 'lucide-react';
 import { PDFDownloadLink, Document, Page, Text, View, StyleSheet, Image as PDFImage } from '@react-pdf/renderer';
+import { Helmet } from 'react-helmet';
 
 type FileWithPreview = {
   file: File;
@@ -230,168 +231,193 @@ const ConversionTool: React.FC<ConversionToolProps> = ({ darkMode }) => {
   const [showPdfSettingsModal, setShowPdfSettingsModal] = useState(false);
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden max-w-4xl mx-auto transition-colors duration-200">
-      {/* Upload Area */}
-      {files.length === 0 ? (
-        <div 
-          className={`border-2 border-dashed rounded-2xl p-8 text-center transition-all duration-300 ${
-            isDragging 
-              ? 'border-blue-500 bg-blue-50/50 dark:bg-blue-900/20' 
-              : 'border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-500'
-          }`}
-          onDragOver={onDragOver}
-          onDragLeave={onDragLeave}
-          onDrop={onDrop}
-        >
-          <Upload className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-300" />
-          <p className="mt-2 text-sm font-medium text-gray-900 dark:text-white">
-            Drag and drop your images here
-          </p>
-          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-            Supports JPG, PNG, BMP, GIF, TIFF, and WEBP
-          </p>
-          <button
-            type="button"
-            onClick={() => fileInputRef.current?.click()}
-            className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-colors"
+    <>
+      <Helmet>
+        <link rel="canonical" href="https://yourdomain.com/image-to-pdf" />
+        <title>Best Free Image to PDF Converter Online – No Watermark</title>
+        <meta name="description" content="Convert images (JPG, PNG, BMP) to PDF online for free. No registration, no watermark, fast & secure conversion. Try it now!" />
+        
+        {/* Schema Markup */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{
+              "@type": "Question",
+              "name": "Is the Image to PDF converter online free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, our tool is completely free with no watermark or hidden charges."
+              }
+            }]
+          })}
+        </script>
+      </Helmet>
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden max-w-4xl mx-auto transition-colors duration-200">
+        {/* Upload Area */}
+        {files.length === 0 ? (
+          <div 
+            className={`border-2 border-dashed rounded-2xl p-8 text-center transition-all duration-300 ${
+              isDragging 
+                ? 'border-blue-500 bg-blue-50/50 dark:bg-blue-900/20' 
+                : 'border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-500'
+            }`}
+            onDragOver={onDragOver}
+            onDragLeave={onDragLeave}
+            onDrop={onDrop}
           >
-            Choose Files
-          </button>
-          <input
-            ref={fileInputRef}
-            type="file"
-            multiple
-            accept="image/*"
-            onChange={handleFileInputChange}
-            className="hidden"
-          />
-          <p className="mt-4 text-xs text-gray-500 dark:text-gray-400">
-            No registration required • 100% free • Files deleted after 1 hour
-          </p>
-        </div>
-      ) : (
-        <div className="p-6">
-          {/* File List */}
-          <div className="mb-6">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                {files.length} {files.length === 1 ? 'Image' : 'Images'} Selected
-              </h3>
-              <button
-                onClick={() => fileInputRef.current?.click()}
-                className="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
-              >
-                Add More
-              </button>
-              <input
-                ref={fileInputRef}
-                type="file"
-                multiple
-                accept="image/*"
-                onChange={handleFileInputChange}
-                className="hidden"
-              />
+            <Upload className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-300" />
+            <p className="mt-2 text-sm font-medium text-gray-900 dark:text-white">
+              Drag and drop your images here
+            </p>
+            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+              Supports JPG, PNG, BMP, GIF, TIFF, and WEBP
+            </p>
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-colors"
+            >
+              Choose Files
+            </button>
+            <input
+              ref={fileInputRef}
+              type="file"
+              multiple
+              accept="image/*"
+              onChange={handleFileInputChange}
+              className="hidden"
+            />
+            <p className="mt-4 text-xs text-gray-500 dark:text-gray-400">
+              No registration required • 100% free • Files deleted after 1 hour
+            </p>
+          </div>
+        ) : (
+          <div className="p-6">
+            {/* File List */}
+            <div className="mb-6">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                  {files.length} {files.length === 1 ? 'Image' : 'Images'} Selected
+                </h3>
+                <button
+                  onClick={() => fileInputRef.current?.click()}
+                  className="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
+                >
+                  Add More
+                </button>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  multiple
+                  accept="image/*"
+                  onChange={handleFileInputChange}
+                  className="hidden"
+                />
+              </div>
+              
+              <div className="space-y-3 max-h-80 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600">
+                {files.map((file, index) => (
+                  <div 
+                    key={file.id} 
+                    className="flex items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors"
+                  >
+                    <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded bg-gray-200 dark:bg-gray-600">
+                      <img 
+                        src={file.preview} 
+                        alt={`Preview of ${file.file.name}`}
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <div className="ml-4 flex-1 min-w-0">
+                      <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
+                        {file.file.name}
+                      </p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">
+                        {(file.file.size / 1024).toFixed(1)} KB
+                      </p>
+                    </div>
+                    <div className="flex space-x-2">
+                      <button 
+                        onClick={() => moveFile(file.id, 'up')}
+                        disabled={index === 0}
+                        className={`p-1 rounded-full ${
+                          index === 0 
+                            ? 'text-gray-300 dark:text-gray-600' 
+                            : 'text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
+                        } transition-colors`}
+                      >
+                        <ArrowUp className="h-4 w-4" />
+                      </button>
+                      <button 
+                        onClick={() => moveFile(file.id, 'down')}
+                        disabled={index === files.length - 1}
+                        className={`p-1 rounded-full ${
+                          index === files.length - 1 
+                            ? 'text-gray-300 dark:text-gray-600' 
+                            : 'text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
+                        } transition-colors`}
+                      >
+                        <ArrowDown className="h-4 w-4" />
+                      </button>
+                      <button 
+                        onClick={() => removeFile(file.id)}
+                        className="p-1 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
             
-            <div className="space-y-3 max-h-80 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600">
-              {files.map((file, index) => (
-                <div 
-                  key={file.id} 
-                  className="flex items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors"
+            {/* Settings Toggle */}
+            <div className="mb-6">
+              <button
+                onClick={() => setShowPdfSettingsModal(true)}
+                className="flex items-center text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
+              >
+                <Settings className="h-4 w-4 mr-1" />
+                PDF Settings
+              </button>
+            </div>
+            
+            {/* Action Buttons */}
+            <div className="flex justify-center">
+              {files.length > 0 && (
+                <PDFDownloadLink
+                  document={<MyDocument files={files} />}
+                  fileName="converted-images.pdf"
+                  style={{ textDecoration: 'none' }}
                 >
-                  <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded bg-gray-200 dark:bg-gray-600">
-                    <img 
-                      src={file.preview} 
-                      alt={`Preview of ${file.file.name}`}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <div className="ml-4 flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
-                      {file.file.name}
-                    </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
-                      {(file.file.size / 1024).toFixed(1)} KB
-                    </p>
-                  </div>
-                  <div className="flex space-x-2">
-                    <button 
-                      onClick={() => moveFile(file.id, 'up')}
-                      disabled={index === 0}
-                      className={`p-1 rounded-full ${
-                        index === 0 
-                          ? 'text-gray-300 dark:text-gray-600' 
-                          : 'text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
-                      } transition-colors`}
+                  {({ loading }) => (
+                    <button
+                      className={`flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors ${
+                        loading ? 'opacity-50 cursor-not-allowed' : ''
+                      }`}
+                      disabled={loading}
                     >
-                      <ArrowUp className="h-4 w-4" />
+                      <Download size={18} />
+                      {loading ? 'Generating PDF...' : 'Download PDF'}
                     </button>
-                    <button 
-                      onClick={() => moveFile(file.id, 'down')}
-                      disabled={index === files.length - 1}
-                      className={`p-1 rounded-full ${
-                        index === files.length - 1 
-                          ? 'text-gray-300 dark:text-gray-600' 
-                          : 'text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
-                      } transition-colors`}
-                    >
-                      <ArrowDown className="h-4 w-4" />
-                    </button>
-                    <button 
-                      onClick={() => removeFile(file.id)}
-                      className="p-1 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              ))}
+                  )}
+                </PDFDownloadLink>
+              )}
             </div>
           </div>
-          
-          {/* Settings Toggle */}
-          <div className="mb-6">
-            <button
-              onClick={() => setShowPdfSettingsModal(true)}
-              className="flex items-center text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
-            >
-              <Settings className="h-4 w-4 mr-1" />
-              PDF Settings
-            </button>
-          </div>
-          
-          {/* Action Buttons */}
-          <div className="flex justify-center">
-            {files.length > 0 && (
-              <PDFDownloadLink
-                document={<MyDocument files={files} />}
-                fileName="converted-images.pdf"
-                style={{ textDecoration: 'none' }}
-              >
-                {({ loading }) => (
-                  <button
-                    className={`flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors ${
-                      loading ? 'opacity-50 cursor-not-allowed' : ''
-                    }`}
-                    disabled={loading}
-                  >
-                    <Download size={18} />
-                    {loading ? 'Generating PDF...' : 'Download PDF'}
-                  </button>
-                )}
-              </PDFDownloadLink>
-            )}
-          </div>
-        </div>
-      )}
-      {showPdfSettingsModal && (
-        <PdfSettingsModal 
-          settings={settings} 
-          onClose={() => setShowPdfSettingsModal(false)} 
-          onSave={() => setShowPdfSettingsModal(false)} 
-        />
-      )}
-    </div>
+        )}
+        {showPdfSettingsModal && (
+          <PdfSettingsModal 
+            settings={settings} 
+            onClose={() => setShowPdfSettingsModal(false)} 
+            onSave={() => setShowPdfSettingsModal(false)} 
+          />
+        )}
+      </div>
+    </>
   );
 };
 
