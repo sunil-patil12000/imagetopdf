@@ -1,0 +1,12 @@
+{
+  "languageName": "हिन्दी",
+  "header": {
+    "home": "मुखपृष्ठ",
+    "about": "हमारे बारे में",
+    "blog": "ब्लॉग"
+  },
+  "cta": {
+    "convertNow": "अभी बदलें",
+    "selectLanguage": "भाषा चुनें"
+  }
+}
