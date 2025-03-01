@@ -1,0 +1,14 @@
+.language-switcher {
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid #e5e7eb;
+  background: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .language-switcher {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}

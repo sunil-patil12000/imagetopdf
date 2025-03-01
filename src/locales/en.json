@@ -1,0 +1,12 @@
+{
+  "languageName": "English",
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "blog": "Blog"
+  },
+  "cta": {
+    "convertNow": "Convert Now",
+    "selectLanguage": "Select Language"
+  }
+}

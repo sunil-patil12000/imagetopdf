@@ -1,0 +1,12 @@
+{
+  "languageName": "العربية",
+  "header": {
+    "home": "الرئيسية",
+    "about": "من نحن",
+    "blog": "المدونة"
+  },
+  "cta": {
+    "convertNow": "تحويل الآن",
+    "selectLanguage": "اختر اللغة"
+  }
+}
