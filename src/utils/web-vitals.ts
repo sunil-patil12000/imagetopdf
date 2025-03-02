@@ -1,11 +1,4 @@
-import { onCLS, onFID, onFCP, onLCP, onTTFB } from 'web-vitals';
-
-type ReportHandler = (metric: {
-  name: string;
-  delta: number;
-  value: number;
-  id: string;
-}) => void;
+import { ReportHandler, getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
 
 /**
  * Initialize Web Vitals reporting
@@ -14,11 +7,11 @@ type ReportHandler = (metric: {
 export function reportWebVitals(onPerfEntry?: ReportHandler): void {
   if (onPerfEntry && onPerfEntry instanceof Function) {
     // Import web-vitals and report each metric
-    onCLS(onPerfEntry); // Cumulative Layout Shift
-    onFID(onPerfEntry); // First Input Delay
-    onFCP(onPerfEntry); // First Contentful Paint
-    onLCP(onPerfEntry); // Largest Contentful Paint
-    onTTFB(onPerfEntry); // Time to First Byte
+    getCLS(onPerfEntry); // Cumulative Layout Shift
+    getFID(onPerfEntry); // First Input Delay
+    getFCP(onPerfEntry); // First Contentful Paint
+    getLCP(onPerfEntry); // Largest Contentful Paint
+    getTTFB(onPerfEntry); // Time to First Byte
   }
 }
 
