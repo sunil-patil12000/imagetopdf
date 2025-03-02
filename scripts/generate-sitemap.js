@@ -1,6 +1,4 @@
-import { writeFileSync } from 'fs';
-
-const routes = ['/'];
+const routes = ['/', '/blog', '/about'];
 const baseUrl = 'https://imgtopdf.sunilpatil.tech';
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -15,4 +13,4 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
   `).join('')}
 </urlset>`;
 
-writeFileSync('./public/sitemap.xml', sitemap);
+require('fs').writeFileSync('./public/sitemap.xml', sitemap);

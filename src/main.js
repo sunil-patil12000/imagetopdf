@@ -32,7 +32,16 @@ async function updateContent() {
 // Initialize translations
 updateContent();
 
+<<<<<<< HEAD
+
+// Handle language paths correctly
+document.getElementById('languageSwitcher')?.addEventListener('change', function() {
+  const newPath = this.value;
+  window.location.href = `${window.location.origin}${newPath}`;
+});
+=======
 // Handle language change
 document.getElementById('languageSwitcher')?.addEventListener('change', () => {
   window.location.href = document.getElementById('languageSwitcher').value;
 });
+>>>>>>> fd8c398 (seo now fix)
