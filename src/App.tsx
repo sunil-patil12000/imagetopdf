@@ -277,6 +277,7 @@ function App() {
             </div>
           </div>
         )}
+        <LiveChat />
         <LiveChat darkMode={darkMode} />
         <CookieConsent darkMode={darkMode} />
       </div>
